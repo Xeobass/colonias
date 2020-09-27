@@ -1,0 +1,63 @@
+<div class="text-center">
+    <h1>Colonias Canguesas</h1>
+    <br />
+    <img src="https://coloniascanguesasblog.files.wordpress.com/2020/07/logotipo1-1.png?w=1024" alt="Colonias Canguesas" />
+    <h3>Centro de gesti&oacute;n</h3>
+    <br />
+    <button type="button" class="btn btn-lg btn-primary" (click)="showLoginForm(template)">Entrar</button>
+</div>
+
+<ng-template #template>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Vista_Login_Manager.svg" id="icon" alt="User Icon" />
+          </div>
+      
+          <!-- Login Form -->
+          <form>
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuario" [(ngModel)]="dataForm.name">
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="dataForm.pass">
+            <input type="button" class="fadeIn fourth" value="Log In" (click)="confirm(dataForm,nouser)">
+          </form>
+          <!-- Remind Passowrd -->
+          <!--<div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>-->
+      
+        </div>
+      </div>
+ <!-- 
+  <div class="modal-body text-center">
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+  -->
+</ng-template>
+
+<ng-template #nouser>
+  <div class="wrapper fadeInDown">
+    <div id="noUser">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="https://www.iconfinder.com/data/icons/gray-user-management/512/forbidden-512.png" id="iconForbiden" alt="User Icon" />
+      </div>
+      
+      <form>
+        <div class="col text-center">
+          <p class="h2">Usuario no encontrado</p>
+          <input type="button" class="fadeIn fourth" value="Aceptar" (click)="cerrarNoUsuario()">
+        </div>
+      </form>
+
+  
+    </div>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>
