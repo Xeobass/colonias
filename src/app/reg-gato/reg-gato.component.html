@@ -1,0 +1,130 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <form>
+        <div>
+            <img id="gatopreview" src="" style="width: 15vw; height: auto;">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="handleFileInput($event.target.files)" accept="image/x-png,image/gif,image/jpeg" >
+          </div>
+        <div class="form-group row">
+          <label for="nomGato" class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nomGato" placeholder="Nombre gato" [(ngModel)]="datosGato.nombreGato" name="nombreGato">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="coloniaGato" class="col-sm-2 col-form-label">Colonia en la que se encuentra</label>
+          <div class="col-sm-10">
+            <select [(ngModel)]="datosGato.idColonia" name="coloniaGato" id="coloniaGato" class="custom-select">
+              <option *ngFor="let colonia of listaColonias" [ngValue]="colonia.idColonia">
+                   {{colonia.nombreColonia}}
+               </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="esterilizacionGato" class="col-sm-2 col-form-label">Esterilizaci&oacute;n</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="esterilizacionGato" [(ngModel)]="datosGato.idEsterilizacion" name="idEsterilizacion" placeholder="Colonia en la que vive el gato">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="chipGato" class="col-sm-2 col-form-label">N&uacute;mero de chip identificativo</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="chipGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idChip" name="idChip">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="situacionGato" class="col-sm-2 col-form-label">La situación del gato es:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="situacionGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idSituacion" name="idSituacion">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="sexoGato" class="col-sm-2 col-form-label">Sexo:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="sexoGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idSexo" name="idSexo">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="testGato" class="col-sm-2 col-form-label">Resultado test:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="testGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idPositivo" name="idPositivo">
+          </div>
+        </div>
+       
+        <div class="form-group row">
+          <label for="pesoGato" class="col-sm-2 col-form-label">Peso:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="pesoGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.peso" name="peso">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="marcaGato" class="col-sm-2 col-form-label">Marcaje esterilización:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="marcaGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.marcaEsterilizacion" name="marcaEsterilizacion">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="caracteristicasGato" class="col-sm-2 col-form-label">Características identificativas:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="caracteristicasGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.caracteristicas" name="caracteristicas">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="nacGato" class="col-sm-2 col-form-label">Fecha nacimiento:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nacGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.nacimientoGato" name="nacimientoGato">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="defGato" class="col-sm-2 col-form-label">Fecha defunción:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="defGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.fallecimientoGato" name="fallecimientoGato">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  First radio
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  Second radio
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                <label class="form-check-label" for="gridRadios3">
+                  Third disabled radio
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-2">Checkbox</div>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck1">
+              <label class="form-check-label" for="gridCheck1">
+                Example checkbox
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button class="btn btn-primary" (click)="guardarDatosGato(datosGato)">Guardar datos</button>
+          </div>
+        </div>
+      </form>
+</div>
