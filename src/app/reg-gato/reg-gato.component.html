@@ -1,17 +1,17 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.css">
 <app-navbar></app-navbar>
 <div class="container">
     <form>
         <div>
-            <img id="gatopreview" src="" style="width: 15vw; height: auto;">
+            <img id="gatopreview" src="" class="text-center img-thumbnail" style="max-width: 350px;">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlFile1">Example file input</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="handleFileInput($event.target.files)" accept="image/x-png,image/gif,image/jpeg" >
           </div>
         <div class="form-group row">
           <label for="nomGato" class="col-sm-2 col-form-label">Nombre</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nomGato" placeholder="Nombre gato" [(ngModel)]="datosGato.nombreGato" name="nombreGato">
+            <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" id="nomGato" placeholder="Nombre gato" [(ngModel)]="datosGato.nombreGato" name="nombreGato">
           </div>
         </div>
         <div class="form-group row">
@@ -25,36 +25,140 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="esterilizacionGato" class="col-sm-2 col-form-label">Esterilizaci&oacute;n</label>
+          <label for="esterilizacionGato" class="col-sm-2 col-form-label">Esterilizado</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="esterilizacionGato" [(ngModel)]="datosGato.idEsterilizacion" name="idEsterilizacion" placeholder="Colonia en la que vive el gato">
+            <bSwitch
+              id="esterilizacionGato"
+              name="idEsterilizacion" 
+              [switch-off-text]="offText"
+              [switch-on-text]="onText"
+              [(ngModel)]="esterilizado"
+              (changeState)="onChange($event)">
+            </bSwitch>
+            <div [hidden]="!esterilizado">
+              <div class="container">
+                <div class="form-group row">
+                  <label for="clinicavtn" class="col-sm-3 col-form-label">Clinica veterinaria</label>
+                  <div class="col-sm-5">
+                    <select [(ngModel)]="datosEsterilizacion.idCentroVeterinario" name="clinicavtn" id="clinicavtn" class="custom-select">
+                      <option *ngFor="let clinicas of listaClinicaVeterinarios" [ngValue]="clinicas.idClinica">
+                           {{clinicas.nombreClinica}}
+                       </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="fechaEsterilizacion" class="col-sm-3 col-form-label">Fecha esterilización</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="fechaEsterilizacion" placeholder="Fecha esterilización" [(ngModel)]="datosEsterilizacion.fechaEsterilizacion" name="fechaEsterilizacion">
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        <div class="form-group row">
+          <label for="chipGato" class="col-sm-2 col-form-label">Tiene chip</label>
+          <div class="col-sm-10">
+            <bSwitch
+            id="chipGato"
+            name="idChip" 
+            [switch-off-text]="offText"
+            [switch-on-text]="onText"
+            [(ngModel)]="chipeado"
+            (changeState)="onChange($event)">
+          </bSwitch>
+          <div [hidden]="!chipeado">
+            <div class="container">
+              <div class="form-group row">
+                <label for="formchip" class="col-sm-3 col-form-label">Clinica veterinaria</label>
+                <div class="col-sm-5">
+                  <select [(ngModel)]="datosChip.idClinicaVeterinario" name="formchip" id="formchip" class="custom-select">
+                    <option *ngFor="let clinicas of listaClinicaVeterinarios" [ngValue]="clinicas.idClinica">
+                         {{clinicas.nombreClinica}}
+                     </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="fechaidentificacionchip" class="col-sm-3 col-form-label">Fecha identificación chip</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="fechaidentificacionchip" placeholder="Fecha identificacion chip" [(ngModel)]="datosChip.fechaChip" name="fechaidentificacionchip">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="numerchipid" class="col-sm-3 col-form-label">Número chip</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="numerchipid" placeholder="Número ID chip" [(ngModel)]="datosChip.numeroChip" name="numerchipid">
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="chipGato" class="col-sm-2 col-form-label">N&uacute;mero de chip identificativo</label>
+          <label for="idSituacion" class="col-sm-2 col-form-label">La situación del gato es:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="chipGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idChip" name="idChip">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="situacionGato" class="col-sm-2 col-form-label">La situación del gato es:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="situacionGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idSituacion" name="idSituacion">
+            <select id="idSituacion" class="custom-select" [(ngModel)]="datosGato.idSituacion" name="idSituacion">
+              <option *ngFor="let situaciongato of listaSituacion" [ngValue]="situaciongato.idSituacion">
+                   {{situaciongato.descripcionSituacion}}
+               </option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
           <label for="sexoGato" class="col-sm-2 col-form-label">Sexo:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="sexoGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idSexo" name="idSexo">
+            <select id="sexoGato" class="custom-select" [(ngModel)]="datosGato.idSexo" name="idSexo">
+              <option *ngFor="let sexogato of listaSexo" [ngValue]="sexogato.idSexo">
+                   {{sexogato.descripcionSexo}}
+               </option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
           <label for="testGato" class="col-sm-2 col-form-label">Resultado test:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="testGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.idPositivo" name="idPositivo">
-          </div>
+            <bSwitch
+            id="testGato"
+            name="testGatoResultado" 
+            [switch-off-text]="offText"
+            [switch-on-text]="onText"
+            [(ngModel)]="gatoTestado"
+            (changeState)="onChange($event)">
+          </bSwitch>
+          <div [hidden]="!gatoTestado">
+              <div class="container">
+                <div class="form-group row">
+                  <label for="formchip" class="col-sm-3 col-form-label">Resultado test</label>
+                  <div class="col-sm-5">
+                    <select [(ngModel)]="datosTest.idResultadoTest" name="testGato" id="testGato" class="custom-select">
+                      <option *ngFor="let positivo of listaPositivos" [ngValue]="positivo.idPositivo">
+                           {{positivo.descripcionPositivo}}
+                       </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="fechaidentificacionchip" class="col-sm-3 col-form-label">Fecha test</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="fechaidentificacionchip" placeholder="Fecha identificacion chip" [(ngModel)]="datosTest.fechaTest" name="fechaidentificacionchip">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="numerchipid" class="col-sm-3 col-form-label">Centro veterinario:</label>
+                  <div class="col-sm-5">
+                    <select [(ngModel)]="datosTest.idClinicaVeterinaria" name="formchip" id="formchip" class="custom-select">
+                      <option *ngFor="let clinicas of listaClinicaVeterinarios" [ngValue]="clinicas.idClinica">
+                           {{clinicas.nombreClinica}}
+                       </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
         </div>
-       
         <div class="form-group row">
           <label for="pesoGato" class="col-sm-2 col-form-label">Peso:</label>
           <div class="col-sm-10">
@@ -64,13 +168,13 @@
         <div class="form-group row">
           <label for="marcaGato" class="col-sm-2 col-form-label">Marcaje esterilización:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="marcaGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.marcaEsterilizacion" name="marcaEsterilizacion">
+            <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" id="marcaGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.marcaEsterilizacion" name="marcaEsterilizacion">
           </div>
         </div>
         <div class="form-group row">
           <label for="caracteristicasGato" class="col-sm-2 col-form-label">Características identificativas:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="caracteristicasGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.caracteristicas" name="caracteristicas">
+            <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" id="caracteristicasGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.caracteristicas" name="caracteristicas">
           </div>
         </div>
         <div class="form-group row">
@@ -83,42 +187,6 @@
           <label for="defGato" class="col-sm-2 col-form-label">Fecha defunción:</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="defGato" placeholder="Colonia en la que vive el gato" [(ngModel)]="datosGato.fallecimientoGato" name="fallecimientoGato">
-          </div>
-        </div>
-        <fieldset class="form-group">
-          <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                <label class="form-check-label" for="gridRadios1">
-                  First radio
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                  Second radio
-                </label>
-              </div>
-              <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                <label class="form-check-label" for="gridRadios3">
-                  Third disabled radio
-                </label>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <div class="form-group row">
-          <div class="col-sm-2">Checkbox</div>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck1">
-              <label class="form-check-label" for="gridCheck1">
-                Example checkbox
-              </label>
-            </div>
           </div>
         </div>
         <div class="form-group row">

@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <br/>
+   
+      <div class="row">
+        <div class="col-sm-10 offset-sm-1 text-center">
+
+
+          <form class="justify-content-center">
+            <div class="form-group row text-center">
+                <label for="nomInstalacion" class="col-sm-4 col-form-label">Lugar de instalación</label>
+                <div class="col-sm-6">
+                  <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" id="nomInstalacion" placeholder="Nombre tienda " [(ngModel)]="nombreInstalacion" name="nomInstalacion">
+                </div>
+              </div>
+              <div class="form-group row text-center">
+                <label for="fechaInstalacion" class="col-sm-4 col-form-label">Fecha instalación</label>
+                <div class="col-sm-6">
+                 <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" name="fechaInstalacion" [(ngModel)]="calModel" ngbDatepicker [dayTemplate]="customDay" [markDisabled]="isDisabled" #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+             <!-- <div class="form-group row row text-center">
+                <label for="fechaBajaInst" class="col-sm-2 col-form-label">Fecha retirada</label>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" name="fechaBajaInst" [(ngModel)]="fechaRetirada" ngbDatepicker [dayTemplate]="retiradaDay" [markDisabled]="isDisabled" #e="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="e.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <button class="btn btn-primary float-right" (click)="guardarHucha(nombreInstalacion,calModel,fechaRetirada)">Guardar</button>
+             
+        </form>
+        </div>
+      </div>
+</div>
+
+ <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
+                  <span class="custom-day" [class.weekend]="isWeekend(date)" [class.focused]="focused"
+                        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+                    {{ date.day }}
+                  </span>
+                </ng-template>
+
+ <ng-template #retiradaDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
+                  <span class="custom-day" [class.weekend]="isWeekend(date)" [class.focused]="focused"
+                        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+                    {{ date.day }}
+                  </span>
+                </ng-template>
+
+
+
+
+
+
+
+               
