@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<br/>
+<form class="justify-content-center">
+    <div class="form-group row text-center">
+        <label for="nomInstalacion" class="col-sm-4 col-form-label">Lugar de instalación</label>
+        <div class="col-sm-6">
+          <select [(ngModel)]="huchaGraf" name="recaudacion" id="recaudacion" class="custom-select" (change)="verGrafica(huchaGraf)">
+            <option *ngFor="let hucha of listaHuchas" [ngValue]="hucha.idHucha">
+                 {{hucha.lugarHucha}}
+             </option>
+          </select>
+        </div>
+      </div>
+</form>
+<div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [colors]="barChartColors"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
