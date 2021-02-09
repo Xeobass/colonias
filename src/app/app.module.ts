@@ -27,6 +27,13 @@ import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegGatoComponent } from './reg-gato/reg-gato.component';
+import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RegHuchaComponent } from './reg-hucha/reg-hucha.component';
+import { RegRecaudacionComponent } from './reg-recaudacion/reg-recaudacion.component';
+import { GrafHuchasComponent } from './graf-huchas/graf-huchas.component';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +41,10 @@ import { RegGatoComponent } from './reg-gato/reg-gato.component';
     InitComponent,
     MainComponent,
     NavbarComponent,
-    RegGatoComponent
+    RegGatoComponent,
+    RegHuchaComponent,
+    RegRecaudacionComponent,
+    GrafHuchasComponent
   ],
   imports: [
     HttpClientModule,
@@ -58,7 +68,10 @@ import { RegGatoComponent } from './reg-gato/reg-gato.component';
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
-    FormsModule
+    FormsModule,
+    JwBootstrapSwitchNg2Module,
+    NgbModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
