@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   }
 
   navbarOpen = false;
+  collapsed = true;
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
@@ -22,4 +23,17 @@ export class NavbarComponent implements OnInit {
   registroGatos():void{
     this.route.navigate(["reg-gato"]);
   }
+
+  registroHucha():void{
+    this.route.navigate(['reg-hucha']);
+  };
+
+  registroRecaudacion():void{
+    this.route.navigate(['reg-recaudacion']);
+  };
+
+  graficarHuchas():void{
+    this.route.navigate(['graf-huchas']);
+  };
+
 }
