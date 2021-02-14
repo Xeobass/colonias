@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1 text-center">
+            <form>
+                <div class="form-group row text-center">
+                    <label for="seleccionColoniaUpdate" class="col-sm-4 col-form-label">Colonia a actualizar: </label>
+                    <div class="col-sm-6">
+                        <select [(ngModel)]="coloniaParaActualizar" name="seleccionColoniaUpdate" id="seleccionColoniaUpdate"
+                            class="custom-select">
+                            <option *ngFor="let colonia of listaColonias" [ngValue]="colonia.idColonia">
+                                {{colonia.nombreColonia}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
