@@ -33,6 +33,9 @@ import { RegHuchaComponent } from './reg-hucha/reg-hucha.component';
 import { RegRecaudacionComponent } from './reg-recaudacion/reg-recaudacion.component';
 import { GrafHuchasComponent } from './graf-huchas/graf-huchas.component';
 import { ChartsModule } from 'ng2-charts';
+import { NuevaColoniaComponent } from './nueva-colonia/nueva-colonia.component';
+import { ActualizaColoniaComponent } from './actualiza-colonia/actualiza-colonia.component';
+import { MuestraDatosColoniaComponent } from './muestra-datos-colonia/muestra-datos-colonia.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { ChartsModule } from 'ng2-charts';
     RegGatoComponent,
     RegHuchaComponent,
     RegRecaudacionComponent,
-    GrafHuchasComponent
+    GrafHuchasComponent,
+    NuevaColoniaComponent,
+    ActualizaColoniaComponent,
+    MuestraDatosColoniaComponent
   ],
   imports: [
     HttpClientModule,
