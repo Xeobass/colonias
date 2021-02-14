@@ -19,34 +19,41 @@ export class PeticionesService {
     }
 
     getHuchas(datos:any){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/huchas", datos);
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/huchas`, datos);
     }
 
     getUltimoGato(){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/ultimogato");
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/ultimogato`);
     }
     getPositivo(){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/positivo");
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/positivo`);
     }
 
     getVeterinarios(){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/veterinarios");
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/veterinarios`);
     }
 
     getListaColonias(){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/colonias");
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/colonias`);
     }
 
     getSexoGatos(){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/sexogatos");
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/sexogatos`);
     }
 
     getSituacion(){
-      return this.httpClient.get<any>("http://192.168.0.28:9876/situacion");
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/situacion`);
+    }
+    getEstadoColonias(){
+      return this.httpClient.get<any>(`${this.REST_API_SERVER}/estadosColonias`);
     }
 
     postRegistraGato(datos:any){
-      return this.httpClient.post<any>("http://192.168.0.28:9876/gatos", datos);
+      return this.httpClient.post<any>(`${this.REST_API_SERVER}/gatos`, datos);
+    }
+
+    postRegistraColonia(datos:any){
+      return this.httpClient.post<any>(`${this.REST_API_SERVER}/nuevacolonia`, datos);
     }
 
 
