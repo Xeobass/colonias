@@ -36,4 +36,16 @@ export class NavbarComponent implements OnInit {
     this.route.navigate(['graf-huchas']);
   };
 
+  nuevaColonia():void{
+    this.route.navigate(['nueva-colonia']);
+  };
+
+  actualizaColonia(){
+    this.route.navigate(['actualiza-colonia']);
+  };
+
+  muestraColonia(){
+    this.route.navigate(['muestra-colonia']);
+  };
+
 }

@@ -100,9 +100,9 @@
           Colonias
         </a>
         <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Agregar nueva colonia</a>
-          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Actualizar datos colonia</a>
-          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mostrar datos colonia</a>
+          <a ngbDropdownItem href="#" (click)="$event.preventDefault(); nuevaColonia();">Agregar nueva colonia</a>
+          <a ngbDropdownItem href="#" (click)="$event.preventDefault(); actualizaColonia();">Actualizar datos colonia</a>
+          <a ngbDropdownItem href="#" (click)="$event.preventDefault(); muestraColonia();">Mostrar datos colonia</a>
         </div>
       </li>
 
